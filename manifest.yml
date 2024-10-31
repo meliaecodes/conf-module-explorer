@@ -1,0 +1,93 @@
+modules:
+  confluence:contentAction:
+    - key: conf-module-demo-content-action
+      resource: contentAction
+      resolver:
+        function: resolver
+      render: native
+      title: CME Content Action
+  confluence:contentBylineItem:
+    - key: conf-module-demo-content-byline-item
+      resource: contentBylineItem
+      resolver:
+        function: resolver
+      render: native
+      title: CME Content Byline Item
+  confluence:contextMenu:
+    - key: conf-module-demo-context-menu
+      resource: contextMenu
+      render: native
+      resolver:
+        function: resolver
+      title: CME Context Menu
+  confluence:homepageFeed:
+    - key: conf-module-demo-homepage-feed
+      resource: homepageFeed
+      render: native
+      resolver:
+        function: resolver
+      title: CME Homepage Feed
+  confluence:spacePage:
+    - key: conf-module-demo-space-page
+      resource: spacePage
+      resolver:
+        function: resolver
+      render: native
+      title: CME Space Page
+      route: conf-space-page
+  confluence:spaceSettings:
+    - key: conf-module-demo-space-settings
+      resource: spaceSettings
+      render: native
+      resolver:
+        function: resolver
+      title: CME Space Settings
+      route: conf-space-settings
+  macro:
+    - key: conf-module-demo-macro
+      resource: macro
+      render: native
+      resolver:
+        function: resolver
+      title: CME Macro
+  confluence:globalPage:
+    - key: conf-module-demo-global-page
+      resource: globalPage
+      render: native
+      resolver:
+        function: resolver
+      title: CME Global Page
+      route: conf-global-page
+  confluence:globalSettings:
+    - key: conf-module-demo-global-settings
+      resource: globalSettings
+      render: native
+      resolver:
+        function: resolver
+      title: CME Global Settings
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: contentAction
+    path: src/frontend/contentAction.jsx
+  - key: contentBylineItem
+    path: src/frontend/contentBylineItem.jsx
+  - key: contextMenu
+    path: src/frontend/contextMenu.jsx
+  - key: homepageFeed
+    path: src/frontend/homepageFeed.jsx
+  - key: macro
+    path: src/frontend/macro.jsx
+  - key: globalPage
+    path: src/frontend/globalPage.jsx
+  - key: globalSettings
+    path: src/frontend/globalSettings.jsx
+  - key: spacePage
+    path: src/frontend/spacePage.jsx
+  - key: spaceSettings
+    path: src/frontend/spaceSettings.jsx
+app:
+  runtime:
+    name: nodejs20.x
+  id: <run forge register to get your id>

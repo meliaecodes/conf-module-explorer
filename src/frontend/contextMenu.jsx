@@ -1,0 +1,36 @@
+import React, { useEffect, useState } from 'react';
+import ForgeReconciler, { Code, Heading, Link, Strong, Text } from '@forge/react';
+import { invoke, view } from '@forge/bridge';
+
+const App = () => {
+  const [data, setData] = useState(null);
+  const [context, setContext] = useState(null);
+  
+  useEffect(() => {
+    view.getContext().then(setContext)
+  }, []);
+
+  useEffect(() => {
+    invoke('getText', { example: 'my-invoke-variable' }).then(setData);
+  }, []);
+
+  return (
+    <>
+      <Heading as="h2">Confluence Module Explorer</Heading>
+      <Text><Strong>Module Type:</Strong> <Code>{data ? data : 'Loading...'}</Code> </Text>
+      <Heading as="h3">Context Information</Heading>
+      <Text><Strong>Selected text:</Strong> {context ? context.extension.selectedText : 'Loading...'} </Text>
+      <Text><Strong>Space key:</Strong> {context ? context.extension.space.key : 'Loading...'} </Text>
+      <Text><Strong>Space id:</Strong> {context ? context.extension.space.id : 'Loading...'} </Text>
+      <Text><Strong>Content id:</Strong> {context ? context.extension.content.id : 'Loading...'} </Text>
+      <Text><Strong>Content type:</Strong> {context ? context.extension.content.type : 'Loading...'} </Text>
+      <Text>View <Link href="https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-context-menu/" openNewTab="true">Context Menu</Link> docs on Atlassian Developers</Text>
+    </>
+  );
+};
+
+ForgeReconciler.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
